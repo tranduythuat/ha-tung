@@ -18,7 +18,7 @@
 
             "cover.invite": "TRÂN TRỌNG KÍNH MỜI BẠN",
             "cover.time": "DÀNH THỜI GIAN ĐẾN THAM DỰ TIỆC THÂN MẬT CỦA",
-            "cover.names": "Nhật Hà & Sơn Tùng",
+            "cover.names": "Nhật Hạ & Sơn Tùng",
 
             "time.title": "Thời gian",
             "time.label": "VÀO LÚC 17:30 - THỨ SÁU",

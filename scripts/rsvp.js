@@ -1,85 +1,171 @@
-"use strict";
-
+var SUPPORTED_LANGS = ["vi", "en"];
+let currentLang = "vi";
+let isSubmitting = false;
 // -------------------------
 // 1. Function chạy sau khi load
 // -------------------------
 function initPage() {
+  console.log('--- CurrentLang ---', currentLang);
   console.log("Trang đã load xong!");
+}
+
+function isSupported(lang) {
+  return SUPPORTED_LANGS.indexOf(lang) !== -1;
+}
+
+function getLangFromURL() {
+  var params = new URLSearchParams(window.location.search);
+  var lang = params.get("lang");
+  return isSupported(lang) ? lang : null;
 }
 
 // -------------------------
 // 2. Function xử lý khi submit form
 // -------------------------
-async function handleFormSubmit(e) {
+async function handleFormSubmit(e, lang = "vi", sheet = "confirm") {
   e.preventDefault();
 
+  // Prevent duplicate submit
+  if (isSubmitting) { return; }
+
   const form = e.target;
+
+  // if (!form) {
+  //   console.error("RSVP form not found");
+  //   return;
+  // }
+
+  // =========================
+  // i18n Messages
+  // =========================
+  const messages = {
+    vi: {
+      sendingTitle: "Đang gửi...",
+      sendingText: "Vui lòng chờ trong giây lát",
+      successTitle: "Thành công!",
+      successText:
+        "Cảm ơn bạn đã xác nhận. Thông tin đã được chuyển đến cô dâu và chú rể rồi nha.",
+      errorTitle: "Lỗi!",
+      errorServer: "OPPS! Không tìm thấy server",
+      errorRetry: "Thử lại",
+    },
+    en: {
+      sendingTitle: "Sending...",
+      sendingText: "Please wait a moment",
+      successTitle: "Success!",
+      successText:
+        "Thank you for your confirmation. Your information has been forwarded to the bride and groom.",
+      errorTitle: "Error!",
+      errorServer: "OPPS! Server not found",
+      errorRetry: "Try again",
+    },
+  };
+
+  const t = messages[lang] || messages.vi;
+
+  // Lock submit
+  isSubmitting = true;
+
+  // Disable submit button
+  // const submitButton = form.querySelector('button[type="submit"], input[type="submit"]');
+  // if (submitButton) {
+  //   submitButton.disabled = true;
+  //   submitButton.dataset.originalText = submitButton.textContent;
+  //   if (submitButton.tagName === "BUTTON") {
+  //     submitButton.textContent = t.sendingTitle;
+  //   }
+  // }
+
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
-  console.log("🚀 ~ handleFormSubmit ~ data:", data);
 
   const {
-    confirm: confirm,
-    name: name,
-    guest_number: guest_number,
-    guest_name: guest_name,
-    phone: phone,
-    message: message,
+    name = "",
+    confirm = "",
+    guest_number = "",
+    note = "",
   } = data;
-  console.log("🚀 ~ handleFormSubmit 2~ data:", data);
 
-  // Thông báo khi bắt đầu gửi
+  // =========================
+  // Loading popup
+  // =========================
   Swal.fire({
-    title: "Đang gửi /Sending/...",
-    text: "Vui lòng chờ trong giây lát /Please wait a moment/",
+    title: t.sendingTitle,
+    text: t.sendingText,
     icon: "info",
     allowOutsideClick: false,
-    didOpen: () => {
-      Swal.showLoading();
-    },
+    allowEscapeKey: false,
+    showConfirmButton: false,
+    didOpen: () => Swal.showLoading(),
   });
 
-  const url =
-    "?sheet=confirm";
+  const sheetURL = `?sheet=${sheet}`;
+
+  const controller = new AbortController();
+
+  const timeout = setTimeout(() => { controller.abort(); }, 15000);
 
   try {
-    const res = await fetch(url, {
+    const body = new URLSearchParams({ name, confirm, guest_number, note });
+    const res = await fetch(sheetURL, {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        name,
-        confirm,
-        guest_number,
-        guest_name,
-        phone,
-        message,
-      }),
+      headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8", },
+      body,
+      signal: controller.signal,
     });
+    clearTimeout(timeout);
 
-    const result = await res.json().catch(() => ({}));
-    console.log("Server response:", result);
+    // Nếu server lỗi HTTP
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
 
+    let result;
+    try {
+      result = await res.json();
+    } catch (error) {
+      throw new Error("Invalid server response");
+    }
+
+    if (!result || result.success === false) {
+      throw new Error(t.errorServer);
+    }
+
+    // Success
     form.reset();
 
-    // Thông báo thành công
     Swal.fire({
-      title: "Thành công /Success/!",
-      text: "Cảm ơn bạn đã gửi phản hồi, thông tin đã được gửi đến dâu rể rồi nha /Thank you for your feedback, the information has been sent to the bride and groom./",
+      title: t.successTitle,
+      text: t.successText,
       icon: "success",
       confirmButtonText: "OK",
-      confirmButtonColor: "#3f4122ff",
+      confirmButtonColor: "#3c7fc2",
     });
   } catch (error) {
     console.error("Error:", error);
+    clearTimeout(timeout);
+    console.error("RSVP submit error:", error);
 
-    // Thông báo lỗi
-    Swal.fire({
-      title: "Lỗi!",
-      text: "OPPS! Đã xảy ra lỗi: " + error.message,
+    let errorMessage = t.errorServer;
+    if (error.name === "AbortError") {
+      errorMessage = t.errorTimeout;
+    }
+
+    await Swal.fire({
+      title: t.errorTitle,
+      text: error.message || t.errorServer,
       icon: "error",
-      confirmButtonText: "Thử lại",
-      confirmButtonColor: "#3f4122ff",
+      confirmButtonText: t.errorRetry,
+      confirmButtonColor: "#3c7fc2",
     });
+  } finally {
+    isSubmitting = false;
+    // if (submitButton) {
+    //   submitButton.disabled = false;
+    //   if (submitButton.tagName === "BUTTON") {
+    //     submitButton.textContent = submitButton.dataset.originalText || "Submit";
+    //   }
+    // }
   }
 }
 
@@ -90,7 +176,13 @@ document.addEventListener("DOMContentLoaded", () => {
   initPage();
 
   const form = document.forms["rsvp-form"];
+  currentLang = getLangFromURL();
   if (form) {
-    form.addEventListener("submit", handleFormSubmit);
+    form.addEventListener("submit", (e) => handleFormSubmit(e, currentLang, "confirm"));
   }
+});
+
+document.addEventListener("langchange", () => {
+  currentLang = getLangFromURL();
+  console.log('--- Lang ---', currentLang);
 });

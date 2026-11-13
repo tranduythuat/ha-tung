@@ -322,72 +322,72 @@
         });
     </script>
     <script>
-        function toggleAccordion(header) {
-            const content = header.nextElementSibling;
-            const icon = header.querySelector('.toggle-icon');
-            const isExpanded = content.classList.contains('expanded');
+        // function toggleAccordion(header) {
+        //     const content = header.nextElementSibling;
+        //     const icon = header.querySelector('.toggle-icon');
+        //     const isExpanded = content.classList.contains('expanded');
 
-            // Đóng tất cả các accordion khác
-            const allContents = document.querySelectorAll('.accordion-content');
-            const allHeaders = document.querySelectorAll('.accordion-header');
-            const allIcons = document.querySelectorAll('.toggle-icon');
+        //     // Đóng tất cả các accordion khác
+        //     const allContents = document.querySelectorAll('.accordion-content');
+        //     const allHeaders = document.querySelectorAll('.accordion-header');
+        //     const allIcons = document.querySelectorAll('.toggle-icon');
 
-            allContents.forEach(item => item.classList.remove('expanded'));
-            allHeaders.forEach(item => item.classList.remove('active'));
-            allIcons.forEach(item => {
-                item.classList.remove('rotated');
-                item.textContent = '+';
-            });
+        //     allContents.forEach(item => item.classList.remove('expanded'));
+        //     allHeaders.forEach(item => item.classList.remove('active'));
+        //     allIcons.forEach(item => {
+        //         item.classList.remove('rotated');
+        //         item.textContent = '+';
+        //     });
 
-            // Nếu chưa mở thì mở accordion được click
-            if (!isExpanded) {
-                content.classList.add('expanded');
-                header.classList.add('active');
-                icon.classList.add('rotated');
-                icon.textContent = '−';
-            }
-        }
+        //     // Nếu chưa mở thì mở accordion được click
+        //     if (!isExpanded) {
+        //         content.classList.add('expanded');
+        //         header.classList.add('active');
+        //         icon.classList.add('rotated');
+        //         icon.textContent = '−';
+        //     }
+        // }
 
-        function updatePlaceholder() {
-            const attr = document.getElementById("confirm-no-label");
+        // function updatePlaceholder() {
+        //     const attr = document.getElementById("confirm-no-label");
 
-            if (window.innerWidth < 540) {
-                attr.textContent = "Không thể tham dự";
-            } else {
-                attr.textContent = "Xin lỗi, không thể tham dự";
-            }
-        }
+        //     if (window.innerWidth < 540) {
+        //         attr.textContent = "Không thể tham dự";
+        //     } else {
+        //         attr.textContent = "Xin lỗi, không thể tham dự";
+        //     }
+        // }
 
-        // chạy khi load trang
-        updatePlaceholder();
+        // // chạy khi load trang
+        // updatePlaceholder();
 
-        // chạy khi resize màn hình
-        window.addEventListener("resize", updatePlaceholder);
+        // // chạy khi resize màn hình
+        // window.addEventListener("resize", updatePlaceholder);
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            new Splide('#image-carousel', {
-                updateOnMove: true,
-                type: 'loop',
-                perPage: 1,
-                perMove: 1,
-                focus: 'center',
-                autoplay: true,
-                interval: 3000,
-                pauseOnHover: true
-            }).mount();
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     new Splide('#image-carousel', {
+        //         updateOnMove: true,
+        //         type: 'loop',
+        //         perPage: 1,
+        //         perMove: 1,
+        //         focus: 'center',
+        //         autoplay: true,
+        //         interval: 3000,
+        //         pauseOnHover: true
+        //     }).mount();
 
-            new Splide('#main-carousel', {
-                updateOnMove: true,
-                type: 'loop',
-                perPage: 1,
-                perMove: 1,
-                focus: 'center',
-                autoplay: true,
-                interval: 4000,
-                pauseOnHover: false
-            }).mount();
-        });
+        //     new Splide('#main-carousel', {
+        //         updateOnMove: true,
+        //         type: 'loop',
+        //         perPage: 1,
+        //         perMove: 1,
+        //         focus: 'center',
+        //         autoplay: true,
+        //         interval: 4000,
+        //         pauseOnHover: false
+        //     }).mount();
+        // });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./scripts/rsvp.js"></script>

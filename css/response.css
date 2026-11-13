@@ -210,4 +210,8 @@
     .content-text ul li {
         font-size: calc((12 / 568) * 100vw);
     }
+
+    .player {
+        max-width: calc((50 / 568) * 100vw);
+    }
 }

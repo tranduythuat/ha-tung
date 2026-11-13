@@ -153,11 +153,27 @@
         }
     }
 
+    function setScrollLocked(isLocked) {
+        if (!document.body) return;
+
+        document.body.classList.toggle("no-scroll", isLocked);
+        document.documentElement.classList.toggle("no-scroll", isLocked);
+
+        if (isLocked) {
+            document.body.style.overflow = "hidden";
+            document.documentElement.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+            document.documentElement.style.overflow = "";
+        }
+    }
+
     function hidePopup() {
         var overlay = document.getElementById("langOverlay");
         if (overlay) {
             overlay.classList.remove("is-visible");
         }
+        setScrollLocked(false);
     }
 
     function showPopup() {
@@ -165,6 +181,7 @@
         if (overlay) {
             overlay.classList.add("is-visible");
         }
+        setScrollLocked(true);
     }
 
     function selectLang(lang, options) {

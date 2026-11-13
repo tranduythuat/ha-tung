@@ -8,11 +8,16 @@
     justify-content: center;
     padding: 20px;
     background: rgba(35, 31, 32, 0.55);
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(4px);
 }
 
 #langOverlay.is-visible {
     display: flex;
+}
+
+body.no-scroll,
+html.no-scroll {
+    overflow: hidden;
 }
 
 .lang-popup {

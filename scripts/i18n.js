@@ -16,6 +16,7 @@
             "lang.vi": "Tiếng Việt",
             "lang.en": "English",
 
+            "cover.invite_guest": "Trân trọng kính mời <span class='guest-name'></span>",
             "cover.invite": "TRÂN TRỌNG KÍNH MỜI BẠN",
             "cover.time": "DÀNH THỜI GIAN ĐẾN THAM DỰ TIỆC THÂN MẬT CỦA",
             "cover.names": "Nhật Hà & Sơn Tùng",
@@ -47,7 +48,7 @@
             "dresscode.black": "Đen",
 
             "rsvp.title": "Gửi lời chúc đến Hà & Tùng",
-            "rsvp.text": "HÃY DÀNH CHÚT THỜI GIAN ĐỂ XÁC NHẬN SỰ THAM DỰ CỦA BẠN <br><strong> TRƯỚC NGÀY 20.12.2026 </strong>NHÉ",
+            "rsvp.text": "HÃY DÀNH CHÚT THỜI GIAN ĐỂ XÁC NHẬN SỰ THAM DỰ CỦA BẠN <br><strong> TRƯỚC NGÀY 20.11.2026 </strong>NHÉ",
             "rsvp.confirmYes": "Sẽ có mặt",
             "rsvp.confirmNo": "Xin lỗi, không thể tham dự",
             "rsvp.namePlaceholder": "Tên của bạn",
@@ -55,13 +56,14 @@
             "rsvp.guestNamePlaceholder": "Tên khách mời đi kèm",
             "rsvp.phonePlaceholder": "Số điện thoại của bạn",
             "rsvp.messagePlaceholder": "Lời nhắn đến cô dâu chú rể",
-            "rsvp.submit": "Xác nhận"
+            "rsvp.submit": "Gửi"
         },
         en: {
             "lang.popupTitle": "Choose language / Chọn ngôn ngữ /",
             "lang.vi": "Tiếng Việt",
             "lang.en": "English",
 
+            "cover.invite_guest": "Dear <span class='guest-name'></span>",
             "cover.invite": "WE KINDLY INVITE YOU",
             "cover.time": "PLEASE JOIN US FOR OUR INTIMATE CELEBRATION",
             "cover.names": "Jolie Le & Tung Doan",
@@ -101,7 +103,7 @@
             "rsvp.guestNamePlaceholder": "Name of accompanying guest",
             "rsvp.phonePlaceholder": "Your phone number",
             "rsvp.messagePlaceholder": "A message to the bride and groom",
-            "rsvp.submit": "Confirm"
+            "rsvp.submit": "Send"
         }
     };
 

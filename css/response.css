@@ -7,6 +7,10 @@
         width: calc((60 / 568) * 100vw);
     }
 
+    .cover .cover-inner .invite-text span {
+        font-size: calc((18 / 568) * 100vw);
+    }
+
     .cover .cover-inner .couple-img .img-gif {
         max-width: calc((511 / 568) * 100vw)
     }
@@ -25,7 +29,7 @@
     }
 
     .cover .cover-inner .cover-names {
-        font-size: calc((32 / 568) * 100vw);
+        font-size: calc((48 / 568) * 100vw);
     }
 
     /* time */

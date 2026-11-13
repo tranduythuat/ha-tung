@@ -81,10 +81,10 @@ async function handleFormSubmit(e, lang = "vi", sheet = "confirm") {
 
   const {
     name = "",
-    confirm = "",
-    guest_number = "",
-    guest_name = "",
-    phone = "",
+    // confirm = "",
+    // guest_number = "",
+    // guest_name = "",
+    // phone = "",
     message = "",
   } = data;
 
@@ -108,7 +108,7 @@ async function handleFormSubmit(e, lang = "vi", sheet = "confirm") {
   const timeout = setTimeout(() => { controller.abort(); }, 15000);
 
   try {
-    const body = new URLSearchParams({ name, confirm, guest_number, guest_name, phone, message });
+    const body = new URLSearchParams({ name, message });
     const res = await fetch(sheetURL, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8", },
@@ -171,11 +171,41 @@ async function handleFormSubmit(e, lang = "vi", sheet = "confirm") {
   }
 }
 
+async function loadGuest() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const inviteCode = urlParams.get("invite");
+  if (!inviteCode)
+    return;
+
+  const response = await fetch(
+    'https://opensheet.elk.sh/1hrSGneMgxwkUVSa_yyUlLReHbFkRgV0AKSelm4iYQLU/T%C3%AAn%20kh%C3%A1ch%20m%E1%BB%9Di'
+  );
+
+  const data = await response.json();
+  console.log('--- DATA ---', data);
+  // Tìm khách mời
+  const guest = data.find(
+    row =>
+      row.slug &&
+      row.slug.trim() === inviteCode
+  );
+
+  // Đổ tên vào giao diện
+  if (guest) {
+    document.querySelector('.guest-name').textContent =
+      guest.name;
+  } else {
+    document.querySelector('.guest-name').textContent =
+      'Quý Khách';
+  }
+}
+
 // -------------------------
 // 3. Gắn sự kiện khi DOM ready
 // -------------------------
 document.addEventListener("DOMContentLoaded", () => {
   initPage();
+  loadGuest();
 
   const form = document.forms["rsvp-form"];
   currentLang = getLangFromURL();
@@ -186,5 +216,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("langchange", () => {
   currentLang = getLangFromURL();
+  loadGuest();
   console.log('--- Lang ---', currentLang);
 });

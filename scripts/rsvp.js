@@ -83,7 +83,9 @@ async function handleFormSubmit(e, lang = "vi", sheet = "confirm") {
     name = "",
     confirm = "",
     guest_number = "",
-    note = "",
+    guest_name = "",
+    phone = "",
+    message = "",
   } = data;
 
   // =========================
@@ -99,14 +101,14 @@ async function handleFormSubmit(e, lang = "vi", sheet = "confirm") {
     didOpen: () => Swal.showLoading(),
   });
 
-  const sheetURL = `?sheet=${sheet}`;
+  const sheetURL = `https://script.google.com/macros/s/AKfycbwAKYVOE8CrBachguHnpNGe--1pickN7FjiyG0W37wyrpus4gfqPBup5DWSjV7owbZ-/exec?sheet=${sheet}`;
 
   const controller = new AbortController();
 
   const timeout = setTimeout(() => { controller.abort(); }, 15000);
 
   try {
-    const body = new URLSearchParams({ name, confirm, guest_number, note });
+    const body = new URLSearchParams({ name, confirm, guest_number, guest_name, phone, message });
     const res = await fetch(sheetURL, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8", },

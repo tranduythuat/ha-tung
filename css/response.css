@@ -215,7 +215,7 @@
         font-size: calc((12 / 568) * 100vw);
     }
 
-    .player {
+    .player img {
         max-width: calc((50 / 568) * 100vw);
     }
 }

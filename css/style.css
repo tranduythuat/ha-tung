@@ -1120,23 +1120,18 @@ a {
 .player {
     position: fixed;
     bottom: 1%;
-    right: 1%;
-    max-width: 50px;
-    min-width: 40px;
-    width: 100%;
-    border-radius: 50%;
-    aspect-ratio: 1;
-    cursor: pointer;
-    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); */
-    border: none;
-    outline: none;
-    overflow: hidden;
+    right: 2%;
 }
 
 .player img {
+    max-width: 50px;
+    min-width: 40px;
     width: 100%;
-    height: 100%;
+    aspect-ratio: 1;
     object-fit: cover;
+    cursor: pointer;
+    background: cornsilk;
+    border-radius: 50%;
 }
 
 .spin {

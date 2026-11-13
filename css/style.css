@@ -79,10 +79,10 @@
     --font-main: "SVN-Gotham Light", serif;
 
     /* Colors */
-    --color-text: #3f4122ff;
-    --color-text-secondary: #363823ff;
-    --color-button: #762222ff;
-    --color-primary: #51110fff;
+    --color-text: rgb(11, 11, 9);
+    --color-text-secondary: rgb(4, 5, 3);
+    --color-button: rgb(38, 22, 14);
+    --color-primary: rgb(38, 22, 14);
     --color-timeline: #ebdec4ff;
     /* --color-secondary: #d2691e; */
 
@@ -189,6 +189,7 @@ a {
 
 .cover .cover-inner .cover-logo img {
     max-width: 60px;
+    padding-right: 20%;
     width: 100%;
     height: auto;
 }
@@ -269,7 +270,7 @@ a {
 
 /* time */
 .time {
-    background-image: url("../images/g190.webp");
+    background-image: url("../images/g190.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -365,7 +366,7 @@ a {
     text-align: center;
     /* padding: 10px 20px;            */
     background-color: var(--color-button);
-    color: #e8dcc2ff;
+    color: rgb(252, 243, 224);
     text-decoration: none;
     border-radius: 50px;
     font-family: "SVN-Gotham", sans-serif;
@@ -410,13 +411,13 @@ a {
 
 /*========================= timeline ===========================*/
 .timeline {
-    background-image: url("../images/image146.webp");
+    background-image: url("../images/image146.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     max-width: 100%;
     aspect-ratio: 568 / 460;
-    color: #e7dbc2ff;
+    color: rgb(248, 241, 225);
     display: flex;
     flex-direction: column;
 }
@@ -560,7 +561,6 @@ a {
     font-size: 11px;
     font-weight: normal;
     letter-spacing: 1.6px;
-    color: #49492cff;
 }
 
 .dresscode .dresscode-item .image-icon {

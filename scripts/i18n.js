@@ -47,7 +47,7 @@
             "dresscode.black": "Đen",
 
             "rsvp.title": "Gửi lời chúc đến Hà & Tùng",
-            "rsvp.text": "HÃY DÀNH CHÚT THỜI GIAN ĐỂ XÁC NHẬN SỰ THAM DỰ CỦA BẠN <br><strong> TRƯỚC NGÀY 09.01.2026 </strong>NHÉ",
+            "rsvp.text": "HÃY DÀNH CHÚT THỜI GIAN ĐỂ XÁC NHẬN SỰ THAM DỰ CỦA BẠN <br><strong> TRƯỚC NGÀY 20.12.2026 </strong>NHÉ",
             "rsvp.confirmYes": "Sẽ có mặt",
             "rsvp.confirmNo": "Xin lỗi, không thể tham dự",
             "rsvp.namePlaceholder": "Tên của bạn",
@@ -93,7 +93,7 @@
             "dresscode.black": "Black",
 
             "rsvp.title": "Send your wishes to Jolie & Tung",
-            "rsvp.text": "PLEASE TAKE A MOMENT TO CONFIRM YOUR ATTENDANCE <br><strong> BEFORE 09.01.2026 </strong> THANK YOU",
+            "rsvp.text": "PLEASE TAKE A MOMENT TO CONFIRM YOUR ATTENDANCE <br><strong> BEFORE 20.12.2026 </strong> THANK YOU",
             "rsvp.confirmYes": "Will attend",
             "rsvp.confirmNo": "Sorry, unable to attend",
             "rsvp.namePlaceholder": "Your name",

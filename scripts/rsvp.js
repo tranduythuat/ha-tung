@@ -174,8 +174,18 @@ async function handleFormSubmit(e, lang = "vi", sheet = "confirm") {
 async function loadGuest() {
   const urlParams = new URLSearchParams(window.location.search);
   const inviteCode = urlParams.get("invite");
-  if (!inviteCode)
+  const inviteText = document.querySelector('.invite-text');
+
+  if (!inviteCode) {
+    if (inviteText) {
+      inviteText.classList.add('is-generic');
+    }
     return;
+  }
+
+  if (inviteText) {
+    inviteText.classList.remove('is-generic');
+  }
 
   const response = await fetch(
     'https://opensheet.elk.sh/1hrSGneMgxwkUVSa_yyUlLReHbFkRgV0AKSelm4iYQLU/T%C3%AAn%20kh%C3%A1ch%20m%E1%BB%9Di'

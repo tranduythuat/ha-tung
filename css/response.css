@@ -7,8 +7,17 @@
         width: calc((60 / 568) * 100vw);
     }
 
+    .cover .cover-inner .invite-text {
+        font-size: calc((20 / 568) * 100vw);
+    }
+
+    .cover .cover-inner .invite-text.is-generic {
+        font-size: calc((16 / 568) * 100vw);
+    }
+
+
     .cover .cover-inner .invite-text span {
-        font-size: calc((18 / 568) * 100vw);
+        font-size: calc((22 / 568) * 100vw);
     }
 
     .cover .cover-inner .couple-img .img-gif {

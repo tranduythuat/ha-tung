@@ -184,11 +184,25 @@ a {
 
 .cover .cover-inner .invite-text {
     padding-top: 10%;
+    font-family: "PinyonScript", sans-serif;
+    font-size: 20px;
+}
+
+.cover .cover-inner .invite-text.is-generic {
+    font-family: "SVN-Gilroy Xlight", sans-serif;
+    font-size: 16px;
+    /* letter-spacing: 0.08em; */
+    /* text-transform: uppercase; */
+}
+
+.cover .cover-inner .invite-text.is-generic span {
+    font-size: inherit;
+    font-family: inherit;
 }
 
 .cover .cover-inner .invite-text span {
-    font-size: 18px;
-    font-family: "SVN-Gilroy Light", sans-serif;
+    font-size: 22px;
+    font-family: "PinyonScript", sans-serif;
 }
 
 .cover .cover-inner .cover-logo {

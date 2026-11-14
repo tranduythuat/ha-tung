@@ -81,7 +81,7 @@
             "timeline.title": "Timeline",
             "timeline.item.welcome": "17:30 - Guest Reception",
             "timeline.item.ceremony": "18:00 - Ceremony",
-            "timeline.item.toasting": "18:30 - Toast",
+            "timeline.item.toasting": "18:30 - Toasts",
 
             "dresscode.title": "Dresscode",
             "dresscode.text": "“PLEASE AVOID WEARING WHITE”",

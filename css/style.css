@@ -185,12 +185,12 @@ a {
 .cover .cover-inner .invite-text {
     padding-top: 10%;
     font-family: "PinyonScript", sans-serif;
-    font-size: 20px;
+    font-size: 23px;
 }
 
 .cover .cover-inner .invite-text.is-generic {
     font-family: "SVN-Gilroy Xlight", sans-serif;
-    font-size: 16px;
+    font-size: 19px;
     /* letter-spacing: 0.08em; */
     /* text-transform: uppercase; */
 }
@@ -201,7 +201,7 @@ a {
 }
 
 .cover .cover-inner .invite-text span {
-    font-size: 22px;
+    font-size: 25px;
     font-family: "PinyonScript", sans-serif;
 }
 
